@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JS - Diana Gallardo</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f8f9fa; display: flex; justify-content: center; }
+        .calculadora { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
+        h2 { text-align: center; color: #333; margin-top: 0; }
+        .campo { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .botones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        button { padding: 10px; border: none; border-radius: 6px; cursor: pointer; background-color: #007bff; color: white; font-weight: bold; transition: background 0.3s; }
+        button:hover { background-color: #0056b3; }
+        .resultado { margin-top: 25px; padding: 15px; background: #e9ecef; border-radius: 8px; text-align: center; font-size: 1.2em; min-height: 1.5em; }
+        #valor-resultado { font-weight: bold; color: #28a745; }
+    </style>
+</head>
+<body>
+
+<div class="calculadora">
+    <h2>Operaciones</h2>
+    
+    <div class="campo">
+        <label for="num1">Primer Número:</label>
+        <input type="number" id="num1" placeholder="Ej: 10">
+    </div>
+
+    <div class="campo">
+        <label for="num2">Segundo Número:</label>
+        <input type="number" id="num2" placeholder="Ej: 5">
+    </div>
+
+    <div class="botones">
+        <button onclick="calcular('suma')">Suma (+)</button>
+        <button onclick="calcular('resta')">Resta (-)</button>
+        <button onclick="calcular('div')">División (/)</button>
+        <button onclick="calcular('exp')">Exponente (^)</button>
+    </div>
+
+    <div class="resultado">
+        Resultado: <span id="valor-resultado">0</span>
+    </div>
+</div>
+
+<script>
+    function calcular(operacion) {
+        // obtención de valores de los inputs por su ID
+        const n1 = parseFloat(document.getElementById('num1').value);
+        const n2 = parseFloat(document.getElementById('num2').value);
+        const display = document.getElementById('valor-resultado');
+
+        // validación para evitar errores si los campos están vacíos
+        if (isNaN(n1) || isNaN(n2)) {
+            display.innerText = "Error: Ingresa números";
+            display.style.color = "red";
+            return;
+        }
+
+        let resultado = 0;
+        display.style.color = "#28a745"; 
+
+        // lógica para el botón 
+        switch (operacion) {
+            case 'suma':
+                resultado = n1 + n2;
+                break;
+            case 'resta':
+                resultado = n1 - n2;
+                break;
+            case 'div':
+                if (n2 === 0) {
+                    display.innerText = "No se puede dividir por 0";
+                    display.style.color = "red";
+                    return;
+                }
+                resultado = n1 / n2;
+                break;
+            case 'exp':
+                resultado = n1 ** n2;
+                break;
+        }
+        display.innerText = Number.isInteger(resultado) ? resultado : resultado.toFixed(4);
+    }
+</script>
+
+</body>
+</html>
