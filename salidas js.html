@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas de JavaScript - Diana Gallardo</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .output-box { background: #eef; padding: 10px; border-left: 5px solid #007bff; margin: 10px 0; }
+        code { color: #230635; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Métodos de Salida en JavaScript</h1>
+        
+        <p><strong>1. Usando <code>innerHTML</code>:</strong> (Modifica el DOM)</p>
+        <div id="perfil-usuario" class="output-box"></div>
+
+        <p><strong>2. Usando <code>document.write()</code>:</strong> (Escribe directamente en el flujo del documento)</p>
+        <div class="output-box">
+            <script>
+                document.write("Rol: Estudiante de Ingeniería de Software");
+            </script>
+        </div>
+
+        <p><strong>3. Usando <code>window.alert()</code>:</strong> (Ventana emergente)</p>
+        <button onclick="mostrarAlerta()">Mostrar Alerta de Sistema</button>
+
+        <p><strong>4. Usando <code>console.log()</code>:</strong> (Salida técnica en la consola del navegador)</p>
+        <p><em>Nota: Abre la consola (F12) para ver este resultado.</em></p>
+    </div>
+
+    <script>
+        // mis datos de ejemplo
+        const usuario = {
+            nombre: "Didi ",
+            universidad: "UAS - Facultad de Ingeniería Mochis",
+            proyecto: "compilador",
+            entorno: "VS Code & VirtualBox"
+        };
+
+        // innerHTML: Ideal para insertar HTML dinámico
+        document.getElementById("perfil-usuario").innerHTML = 
+            `Nombre: ${usuario.nombre} <br> Institución: ${usuario.universidad}`;
+
+        // window.alert(): Útil para notificaciones rápidas
+        function mostrarAlerta() {
+            window.alert("Proyecto actual: " + usuario.proyecto);
+        }
+        console.log("--- Registro de Configuración ---");
+        console.log("Entorno detectado:", usuario.entorno);
+        console.table(usuario);
+    </script>
+
+</body>
+</html>
