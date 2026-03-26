@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de Multiplicar del 1 al 10 - Gallardo Gonzalez Diana Laura</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { color: #1a73e8; }
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background-color: #34a853;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 30px;
+        }
+        button:hover { background-color: #2d8e47; }
+        
+        #contenedor-tablas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tabla-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid #1a73e8;
+            transition: transform 0.2s;
+        }
+        .tabla-card:hover { transform: translateY(-5px); }
+        .tabla-card h3 {
+            margin-top: 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .linea-multiplicacion {
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin: 5px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Generador de Tablas de Multiplicar</h1>
+    <button onclick="generarTablas()">Generar Tablas (1 - 10)</button>
+
+    <div id="contenedor-tablas">
+        </div>
+
+    <script>
+        function generarTablas() {
+            const contenedor = document.getElementById('contenedor-tablas');
+            
+            // limpiamos el contenedor por si ya había tablas generadas
+            contenedor.innerHTML = "";
+
+            // controla el número de la tabla (1 al 10)
+            for (let i = 1; i <= 10; i++) {
+
+                let tablaDiv = document.createElement('div');
+                tablaDiv.className = 'tabla-card';
+                
+                let contenido = `<h3>Tabla del ${i}</h3>`;
+
+                // genera las multiplicaciones del 1 al 10
+                for (let j = 1; j <= 10; j++) {
+                    let resultado = i * j;
+                    contenido += `<div class="linea-multiplicacion">${i} x ${j} = ${resultado}</div>`;
+                }
+
+                tablaDiv.innerHTML = contenido;
+                contenedor.appendChild(tablaDiv);
+            }
+        }
+    </script>
+
+</body>
+</html>

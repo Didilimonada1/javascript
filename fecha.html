@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha Actual con Switch - Gallardo Gonzalez Diana Laura</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+        .fecha-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 8px solid #007bff;
+        }
+        h1 {
+            color: #333;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        span#fecha-texto {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fecha-container">
+        <h1><span id="fecha-texto">Cargando fecha...</span></h1>
+    </div>
+
+    <script>
+        // obtener la fecha actual
+        const ahora = new Date();
+        
+        const diaSemanaNum = ahora.getDay(); 
+        const diaMes = ahora.getDate();
+        const mesNum = ahora.getMonth(); 
+        const anio = ahora.getFullYear();
+
+        let nombreDia;
+        let nombreMes;
+
+        switch (diaSemanaNum) {
+            case 0: nombreDia = "domingo"; break;
+            case 1: nombreDia = "lunes"; break;
+            case 2: nombreDia = "martes"; break;
+            case 3: nombreDia = "miércoles"; break;
+            case 4: nombreDia = "jueves"; break;
+            case 5: nombreDia = "viernes"; break;
+            case 6: nombreDia = "sábado"; break;
+        }
+
+        switch (mesNum) {
+            case 0: nombreMes = "Enero"; break;
+            case 1: nombreMes = "Febrero"; break;
+            case 2: nombreMes = "Marzo"; break;
+            case 3: nombreMes = "Abril"; break;
+            case 4: nombreMes = "Mayo"; break;
+            case 5: nombreMes = "Junio"; break;
+            case 6: nombreMes = "Julio"; break;
+            case 7: nombreMes = "Agosto"; break;
+            case 8: nombreMes = "Septiembre"; break;
+            case 9: nombreMes = "Octubre"; break;
+            case 10: nombreMes = "Noviembre"; break;
+            case 11: nombreMes = "Diciembre"; break;
+        }
+
+        const mensajeFinal = `Hoy es ${nombreDia} ${diaMes} de ${nombreMes} del año ${anio}`;
+
+        // imprimir en el HTML
+        document.getElementById("fecha-texto").innerText = mensajeFinal;
+    </script>
+
+</body>
+</html>
